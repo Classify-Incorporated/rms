@@ -1,0 +1,22 @@
+.welcome-body {
+    background-image: url("/public/assets/images/background/bg-female.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    // backdrop-filter: blur(5px);
+    // background-color: rgba(255, 255, 255, 0.5);
+
+    .card {
+        background: #0c705e;
+        color: #fff;
+
+        .card-body {
+            padding-inline: 12px;
+            .col {
+                font-weight: 500;
+                font-size: 25px;
+            }
+        }
+    }
+}
