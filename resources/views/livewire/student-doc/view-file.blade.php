@@ -142,14 +142,22 @@
                             serve.
                         </div>
                         <div class="signature">
-                            <p>Very truly yours,</p>
-                            <p>
-                                CHARMAE V. ESCANIEL<br />
-                                School Registrar
-                            </p>
+                            <div>
+                                <p>Very truly yours,</p>
+                            </div>
+                            <div>
+                                <p>
+                                    CHARMAE V. ESCANIEL
+                                </p>
+                                <p>
+                                    School Registrar
+                                </p>
+                            </div>
                         </div>
-                        <p class="text-muted mt-5">Not valid without</p>
-                        <p class="text-muted">SNCFI School Seal</p>
+                        <div class="docu-validation">
+                            <p class="text-muted mt-5">Not valid without</p>
+                            <p class="text-muted">SNCFI School Seal</p>
+                        </div>
                     </div>
                 </div>
             </div>
