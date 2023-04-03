@@ -1,0 +1,101 @@
+.hdtc {
+    .title {
+        display: inline-block;
+        border-bottom: 5px solid black;
+        width: 100%;
+        margin-bottom: 50px;
+    }
+    .date {
+        text-align: right;
+        margin-right: 80px;
+    }
+    .body-title {
+        text-align: center;
+        font-size: 30px;
+        font-weight: 500;
+
+        .sub {
+            text-align: center;
+            font-size: large;
+        }
+    }
+    .content {
+        margin-left: 50px;
+        text-indent: 30px;
+
+        .underline {
+            text-decoration: underline;
+            color: black;
+            width: auto;
+        }
+    }
+    .sign {
+        text-align: right;
+        padding-top: 60px;
+        margin-right: 50px;
+    }
+    .validation {
+        padding-top: 70px;
+        font-size: x-small;
+    }
+
+    .bot {
+        text-align: center;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .line {
+        width: 30%;
+        border: none;
+        border-top: 2px solid black;
+        margin: 0 auto 10px auto;
+    }
+
+    .school-name {
+        bottom: 0;
+        text-align: center;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .date {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .input[type="date"] {
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        width: 200px;
+    }
+
+    .underline {
+        border-bottom: 1px solid black;
+        margin-left: 5px;
+        width: 10%;
+    }
+
+    .underline {
+        border-bottom: 1px solid black;
+        margin-left: 5px;
+        width: 10%;
+    }
+
+    .sign {
+        display: flex;
+        justify-content: flex-end;
+        .sig {
+            border-top: 1px solid black;
+            width: 100%;
+        }
+    }
+    .sig {
+        text-align: center;
+        border-top: 1px solid black;
+        width: 16%;
+    }
+}

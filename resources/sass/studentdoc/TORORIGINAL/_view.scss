@@ -1,0 +1,71 @@
+.tororiginal {
+    .col-12 {
+        position: relative;
+        text-decoration: none;
+    }
+
+    .col-12::before,
+    .col-12::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background-color: black; /* set the color of the lines */
+    }
+
+    .col-12::before {
+        bottom: 0;
+        text-decoration: underline double; /* create the double underline effect */
+        text-decoration-thickness: 3px 1px 1px; /* adjust the thickness of the lines */
+    }
+
+    .col-12::after {
+        bottom: -2px; /* adjust the position of the bottom line */
+    }
+
+    .name {
+        margin-top: 10px;
+        word-spacing: 25rem;
+        padding-left: 50px;
+    }
+
+    .names {
+        display: inline-block;
+        border-bottom: 5px solid black;
+        width: 100%;
+        padding-left: 50px;
+    }
+
+    .column {
+        width: 100%;
+    }
+
+    .row {
+        .texts {
+            display: inline-block;
+            border-bottom: 1px solid black;
+            width: 80%;
+        }
+        .text {
+            display: inline-block;
+            border-bottom: 1px solid black;
+            width: 30%;
+        }
+    }
+
+    .names {
+        .grade {
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+    }
+
+    .names {
+        .td {
+            padding: 10px;
+            border: none;
+            text-align: center;
+        }
+    }
+}

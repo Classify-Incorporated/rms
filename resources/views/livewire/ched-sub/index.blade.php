@@ -1,4 +1,4 @@
-<div class="page studentdoc">
+<div class="page chedsub">
     <div class="page-wrapper">
         <!-- Page header -->
         <div class="page-header d-print-none">
@@ -7,10 +7,10 @@
                     <div class="col">
                         <!-- Page pre-title -->
                         <div class="page-pretitle">
-                            Student's
+                            CHED
                         </div>
                         <h2 class="page-title">
-                            Document
+                            Submissions
                         </h2>
                     </div>
                     <!-- Page title actions -->
