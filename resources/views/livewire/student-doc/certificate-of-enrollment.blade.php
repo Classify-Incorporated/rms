@@ -70,7 +70,8 @@
                                         @forelse ($students as $student)
                                             <tr>
                                                 <td><input class="form-check-input m-0 align-middle" type="checkbox"
-                                                        aria-label="Select invoice"></td>
+                                                        aria-label="Select invoice">
+                                                </td>
                                                 <td><span class="text-muted">{{ $student->student->student_id }}</span>
                                                 </td>
                                                 <td>{{ $student->student->first_name }}</td>

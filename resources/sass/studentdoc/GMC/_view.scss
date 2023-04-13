@@ -1,0 +1,30 @@
+.gmc {
+    .title {
+        display: inline-block;
+        border-bottom: 5px solid black;
+        width: 100%;
+        margin-bottom: 50px;
+    }
+    .date {
+        text-align: right;
+        margin-right: 80px;
+    }
+    .body-title {
+        text-align: center;
+        font-size: 30px;
+        font-weight: 500;
+    }
+    .content {
+        margin-left: 50px;
+        text-indent: 30px;
+    }
+    .sign {
+        text-align: right;
+        padding-top: 70px;
+        margin-right: 50px;
+    }
+    .validation {
+        padding-top: 70px;
+        font-size: x-small;
+    }
+}

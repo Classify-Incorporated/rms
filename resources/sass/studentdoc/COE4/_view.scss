@@ -1,0 +1,37 @@
+.coe4 {
+    .title {
+        display: inline-block;
+        border-bottom: 5px solid black;
+        border-bottom-style: double;
+        width: 100%;
+        margin-bottom: 50px;
+    }
+    .date {
+        text-align: right;
+        margin-right: 80px;
+    }
+    .body-title {
+        text-align: center;
+        font-size: 40px;
+        font-weight: 500;
+    }
+    .content {
+        margin-left: 50px;
+        text-indent: 30px;
+    }
+    .col-6 {
+        margin-top: 50px;
+    }
+    .card-body2 {
+        border-top: 2px solid rgb(0, 89, 255);
+    }
+    .sign {
+        text-align: right;
+        padding-top: 70px;
+        margin-right: 50px;
+    }
+    .validation {
+        padding-top: 70px;
+        font-size: x-small;
+    }
+}

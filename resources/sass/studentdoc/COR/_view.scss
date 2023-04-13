@@ -1,0 +1,68 @@
+.cor {
+    .column {
+        float: left;
+        width: 50%;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .ms-2 {
+        font-size: small;
+        margin-bottom: 5rem;
+    }
+    .form {
+        .row {
+            .texts {
+                display: inline-block;
+                border-bottom: 1px solid black;
+                width: 80%;
+            }
+            .text {
+                display: inline-block;
+                border-bottom: 1px solid black;
+                width: 30%;
+            }
+        }
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    th,
+    td {
+        text-align: left;
+        padding: 8px;
+        border: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    td:nth-child(3),
+    td:nth-child(4) {
+        text-align: center;
+    }
+
+    td:nth-child(5) {
+        text-align: center;
+        font-weight: bold;
+    }
+    .col-15 {
+        margin-left: 300px;
+    }
+    .texts {
+        display: inline-block;
+        border-bottom: 1px solid black;
+        width: 20%;
+        text-align: center;
+    }
+}

@@ -4,5 +4,38 @@
 
 @import "welcome/index";
 
+//Certificate of Registration
+@import "studentdoc/COR/view";
+
+//Certificate of Grades
+@import "studentdoc/COGRADES/view";
+
+//FORM137 Request from previous schools
+@import "studentdoc/FORM137Req/view";
+
+//Good Moral Character
+@import "studentdoc/GMC/view";
+
+//Certificate of Enrollment 4P's
+@import "studentdoc/COE4/view";
+
+//Transcript of Records (TOR) PHOTOCOPY
+@import "studentdoc/TORP/view";
+
+//Transcript of Records (TOR) Official Copy for other Schools
+@import "studentdoc/TOROC/view";
+
+//Transcript of Records (TOR) ORIGINAL COPY
+@import "studentdoc/TORORIGINAL/view";
+
+//HONORABLE DISMISSAL TRANSFER CREDENTIAL
+@import "studentdoc/HDTC/view";
+
+//Examination Permit
+@import "studentdoc/EP/view";
+
+//Semestral Grades
+@import "studentdoc/SG/view";
+
 @import "studentdoc/index";
 @import "studentdoc/viewfile";
