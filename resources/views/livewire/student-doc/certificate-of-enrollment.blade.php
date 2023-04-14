@@ -33,7 +33,7 @@
                                 </div>
                                 <div class="col-auto ms-auto d-print-none">
                                     <select wire:model="selectedYear" class="form-select">
-                                        <option value="">Year</option>
+                                        {{-- <option value="">Year</option> --}}
                                         @foreach ($syear as $year)
                                             <option value="{{ $year }}">{{ $year }}</option>
                                         @endforeach
