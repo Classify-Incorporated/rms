@@ -78,7 +78,8 @@
                             <p class="body-semititle">To whom it may concern:</p>
                         </div>
                         <div class="body-text-intro">
-                            This is to certify that <strong class="student-name">NOTADA, CRISTINE JOY LABORDO</strong>
+                            This is to certify that <strong
+                                class="student-name">{{ ucwords($student->full_name) }}</strong>
                             is a bona fide student of this institution and enrolled as <i>Bachelor of Early Childhood
                                 Education (BECE)</i> for the 1ST Semester School Year <text>2022-2023</text> in this
                             office.
@@ -96,48 +97,43 @@
                                     </tr>
                                 </thead>
                             </table>
-                            <i>1st Semester 2022-2023 (BECE-4)</i>
+                            {{-- <i>1st Semester {{ yearCourse($syear) }} (BECE-4)</i> --}}
+                            <i><sup></sup> {{ yearCourse($schoolMarking->syear) }}</i>
                             <table class="table">
                                 <tbody>
-                                    <tr>
-                                        <td>SP TOP</td>
-                                        <td>Special Topics</td>
-                                        <td>3</td>
-                                    </tr>
-                                    <tr>
-                                        <td>ECE 18</td>
-                                        <td>Management of Early Childhood Education Program</td>
-                                        <td>3</td>
-                                    </tr>
-                                    <tr>
-                                        <td>ECE 20</td>
-                                        <td>Family, School, and Community Partnership</td>
-                                        <td>3</td>
-                                    </tr>
-                                    <tr>
-                                        <td>ECE 14</td>
-                                        <td>Early Childhood Education Curriculumn Models</td>
-                                        <td>3</td>
-                                    </tr>
-                                    <tr>
-                                        <td>FS 2</td>
-                                        <td>Field Study 2</td>
-                                        <td>3</td>
-                                    </tr>
-                                    <tr>
-                                        <td>ECE 19</td>
-                                        <td>Research in Early Childhood Education</td>
-                                        <td>3</td>
+                                    @forelse ($student_grades as $grades)
+                                        <tr>
+                                            <td>{{ $grades->courseCode->short_name }}</td>
+                                            <td>{{ $grades->course_title }}</td>
+                                            <td>{{ $grades->grade_letter }}</td>
+                                        </tr>
+                                        @php
+                                            $total += $grades->grade_letter;
+                                        @endphp
+                                    @empty
+                                        <div class="empty">
+                                            <div class="empty-img"><img
+                                                    src="{{ asset('assets/images/undraw_void_-3-ggu.svg') }}"
+                                                    height="128" alt="">
+                                            </div>
+                                            <p class="empty-title">No results found</p>
+                                            <p class="empty-subtitle text-muted">
+                                                Try adjusting your year or search to find what you're looking for.
+                                            </p>
+                                        </div>
+                                    @endforelse
+                                    <tr style="border-bottom: transparent;">
+                                        <td><strong>Total</strong></td>
+                                        <td></td>
+                                        <td><strong>{{ $total }}</strong></td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <div class="total">
-                                <strong>Total</strong>
-                                <strong>18</strong>
-                            </div>
                         </div>
                         <div class="text-bottom mb-4">
-                            This certification is issued upon request of <i>Mr./Ms. Notada</i> for any legal purposes
+                            This certification is issued upon request of <i>Mr./Ms.
+                                {{ ucwords($student->last_name) }}</i> for any
+                            legal purposes
                             this may
                             serve.
                         </div>

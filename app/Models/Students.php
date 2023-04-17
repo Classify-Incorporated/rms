@@ -10,4 +10,11 @@ class Students extends Model
     use HasFactory;
 
     protected $table = 'students';
+
+    protected $primaryKey = 'student_id';
+
+    public function getFullNameAttribute()
+    {
+        return "{$this->last_name}, {$this->first_name}, {$this->middle_name}";
+    }
 }

@@ -3,7 +3,9 @@
 namespace App\Http\Livewire\StudentDoc;
 
 use App\Models\SchoolMarkingPeriods;
+use App\Models\Schools;
 use App\Models\StudentEnrollment;
+use App\Models\StudentReportCardGrades;
 use App\Models\Students;
 use Livewire\Component;
 
@@ -15,10 +17,15 @@ class CertificateOfEnrollment extends Component
 
     public function mount()
     {
-        $this->syear = $this->getYears();
-        // $this->students = Students::select('student_id', 'last_name', 'first_name', 'middle_name')->get();
+        // distinct method, only retrieve unique values from the 'syear'
+        // $years = Schools::distinct('syear')
+        //             ->pluck('syear');
 
-        // dd($students[0]->students);
+        $this->syear = SchoolMarkingPeriods::select('syear', 'mp', 'title', 'marking_period_id')
+                                    ->where('mp', 'ilike', 'QTR')
+                                    ->orderBy('syear')
+                                    ->orderBy('title')
+                                    ->get();
     }
 
     public function render()
@@ -27,43 +34,26 @@ class CertificateOfEnrollment extends Component
     }
 
 
-    public function getYears()
-    {
-        $years = SchoolMarkingPeriods::distinct('syear')
-                    ->pluck('syear');
-        $items = $years->toArray();
-        // dd($years);
-        $transformedItems = [];
-
-        foreach ($items as $schoolYearStart) {
-            $schoolYearEnd = $schoolYearStart + 1;
-            $transformedItems[] = "{$schoolYearStart} - {$schoolYearEnd}";
-        }
-        return $transformedItems;
-    }
-
     public function updatedSelectedYear()
     {
-        // dd($this->selectedYear);
-        $years = explode(" - ", $this->selectedYear);
-        $yearStart = $years[0];
-        $yearEnd = $years[1];
-        // $this->students = StudentEnrollment::with('student')
-        //                         ->select('student_id')
-        //                         ->distinct()
-        //                         ->where('syear', 'ilike', $this->selectedYear)
-        //                         ->get();
-        $this->students  = StudentEnrollment::with('student')
-                ->select('student_id')
+        $obj = json_decode($this->selectedYear);
+        if($this->selectedYear == "" || $this->selectedYear == null) {
+            return $this->students = [];
+        }
+        // dd($obj);
+        $this->students  = StudentReportCardGrades::with('student')
+                ->select('student_id', 'marking_period_id')
                 ->distinct()
-                ->whereBetween('syear', [$yearStart, $yearEnd])
+                ->where('syear', 'ilike', $obj->syear)
+                ->where('marking_period_id', 'ilike', $obj->marking_period_id)
                 ->get();
-        // dd($data);
     }
 
-    public function viewFile($id)
+    public function viewFile($id, $marking_period_id)
     {
-        // dd($id);
-        to_route('sd.viewfile', ['student' => $id]);
+        to_route('sd.viewfile', [
+            'student' => $id,
+            'marking_period_id' => $marking_period_id
+        ]);
     }
 }

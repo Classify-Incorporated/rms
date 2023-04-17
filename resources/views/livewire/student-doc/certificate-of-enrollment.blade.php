@@ -32,10 +32,12 @@
                                     <h3>Students</h3>
                                 </div>
                                 <div class="col-auto ms-auto d-print-none">
-                                    <select wire:model="selectedYear" class="form-select">
-                                        {{-- <option value="">Year</option> --}}
+                                    <select wire:model="selectedYear" class="form-select" wire:ignore>
+                                        <option value="">Year</option>
                                         @foreach ($syear as $year)
-                                            <option value="{{ $year }}">{{ $year }}</option>
+                                            <option value="{{ $year }}">
+                                                {{ getYears($year->syear, $year->title) }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -60,9 +62,9 @@
                                                     type="checkbox" aria-label="Select all invoices"></th>
                                             <th class="w-1">SIS ID
                                             </th>
+                                            <th>Last Name</th>
                                             <th>First Name</th>
                                             <th>Middle Name</th>
-                                            <th>Last Name</th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -74,17 +76,17 @@
                                                 </td>
                                                 <td><span class="text-muted">{{ $student->student->student_id }}</span>
                                                 </td>
+                                                <td>
+                                                    {{ $student->student->last_name }}
+                                                </td>
                                                 <td>{{ $student->student->first_name }}</td>
                                                 <td>
                                                     {{ $student->student->middle_name }}
                                                 </td>
-                                                <td>
-                                                    {{ $student->student->last_name }}
-                                                </td>
                                                 <td class="text-end">
                                                     <div class="btn-list flex-nowrap">
                                                         <a href="#"
-                                                            wire:click="viewFile('{{ $student->student->student_id }}')">
+                                                            wire:click="viewFile('{{ $student->student->student_id }}', '{{ $student->marking_period_id }}')">
                                                             <svg xmlns="http://www.w3.org/2000/svg"
                                                                 class="icon icon-tabler icon-tabler-file-certificate"
                                                                 width="24" height="24" viewBox="0 0 24 24"
@@ -119,7 +121,8 @@
                                                     <select wire:model="selectedYear" class="form-select">
                                                         <option value="">Year</option>
                                                         @foreach ($syear as $year)
-                                                            <option value="{{ $year }}">{{ $year }}
+                                                            <option value="{{ $year }}">
+                                                                {{ getYears($year->syear, $year->title) }}
                                                             </option>
                                                         @endforeach
                                                     </select>

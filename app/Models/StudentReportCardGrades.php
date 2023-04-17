@@ -11,8 +11,13 @@ class StudentReportCardGrades extends Model
 
     protected $table = 'student_report_card_grades';
 
-    public function students()
+    public function student()
     {
-        return $this->belongsTo(Students::class, 'student_id', 'student_id');
+        return $this->belongsTo(Students::class, 'student_id')->select('student_id', 'last_name', 'first_name', 'middle_name');
+    }
+
+    public function courseCode()
+    {
+        return $this->belongsTo(CoursePeriods::class, 'course_period_id', 'course_period_id')->select('course_period_id', 'short_name');
     }
 }
