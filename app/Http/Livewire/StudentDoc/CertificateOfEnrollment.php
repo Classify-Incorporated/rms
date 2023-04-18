@@ -47,6 +47,7 @@ class CertificateOfEnrollment extends Component
                 ->where('syear', 'ilike', $obj->syear)
                 ->where('marking_period_id', 'ilike', $obj->marking_period_id)
                 ->get();
+        // dd($this->students);
     }
 
     public function viewFile($id, $marking_period_id)

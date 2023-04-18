@@ -1,10 +1,10 @@
 <?php
 
 
-function getYears($year, $title)
+function getYears($year)
 {
     $schoolYearEnd = $year + 1;
-    $transformedItem = "{$year} - {$schoolYearEnd} ({$title})";
+    $transformedItem = "{$year} - {$schoolYearEnd}";
 
     return $transformedItem;
 }

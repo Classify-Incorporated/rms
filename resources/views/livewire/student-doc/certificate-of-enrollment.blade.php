@@ -60,8 +60,8 @@
                                         <tr>
                                             <th class="w-1"><input class="form-check-input m-0 align-middle"
                                                     type="checkbox" aria-label="Select all invoices"></th>
-                                            <th class="w-1">SIS ID
-                                            </th>
+                                            <th class="w-1">SIS ID</th>
+                                            <th class="w-1">STUDENT ID</th>
                                             <th>Last Name</th>
                                             <th>First Name</th>
                                             <th>Middle Name</th>
@@ -74,7 +74,12 @@
                                                 <td><input class="form-check-input m-0 align-middle" type="checkbox"
                                                         aria-label="Select invoice">
                                                 </td>
-                                                <td><span class="text-muted">{{ $student->student->student_id }}</span>
+                                                <td>
+                                                    <span class="text-muted">{{ $student->student->student_id }}</span>
+                                                </td>
+                                                <td>
+                                                    <span
+                                                        class="text-muted">{{ $student->student->custom_200000012 ? round($student->student->custom_200000012) : '' }}</span>
                                                 </td>
                                                 <td>
                                                     {{ $student->student->last_name }}

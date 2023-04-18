@@ -13,11 +13,16 @@ class StudentReportCardGrades extends Model
 
     public function student()
     {
-        return $this->belongsTo(Students::class, 'student_id')->select('student_id', 'last_name', 'first_name', 'middle_name');
+        return $this->belongsTo(Students::class, 'student_id')->select('student_id', 'last_name', 'first_name', 'middle_name', 'custom_200000012');
+    }
+
+    public function student_cert_of_grades()
+    {
+        return $this->belongsTo(Students::class, 'student_id')->select('student_id', 'last_name', 'first_name', 'middle_name', 'custom_200000012');
     }
 
     public function courseCode()
     {
-        return $this->belongsTo(CoursePeriods::class, 'course_period_id', 'course_period_id')->select('course_period_id', 'short_name');
+        return $this->belongsTo(CoursePeriods::class, 'course_period_id', 'course_period_id')->select('course_period_id', 'short_name', 'credits');
     }
 }

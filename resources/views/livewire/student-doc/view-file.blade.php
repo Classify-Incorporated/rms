@@ -1,4 +1,4 @@
-<div class="page view-file">
+<div class="page view-file-cert-of-enrollment">
     <div class="page-wrapper">
         <!-- Page header -->
         <div class="page-header d-print-none">
@@ -105,10 +105,10 @@
                                         <tr>
                                             <td>{{ $grades->courseCode->short_name }}</td>
                                             <td>{{ $grades->course_title }}</td>
-                                            <td>{{ $grades->grade_letter }}</td>
+                                            <td>{{ round($grades->courseCode->credits) }}</td>
                                         </tr>
                                         @php
-                                            $total += $grades->grade_letter;
+                                            $total += $grades->courseCode->credits;
                                         @endphp
                                     @empty
                                         <div class="empty">
