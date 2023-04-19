@@ -36,7 +36,7 @@
                                         <option value="">Year</option>
                                         @foreach ($syear as $year)
                                             <option value="{{ $year->syear }}">
-                                                {{ getYears($year->syear, $year->title) }}
+                                                {{ getYears($year->syear) }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -127,7 +127,7 @@
                                                         <option value="">Year</option>
                                                         @foreach ($syear as $year)
                                                             <option value="{{ $year->syear }}">
-                                                                {{ getYears($year->syear, $year->title) }}
+                                                                {{ getYears($year->syear) }}
                                                             </option>
                                                         @endforeach
                                                     </select>

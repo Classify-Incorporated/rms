@@ -34,22 +34,23 @@ class Index extends Component
         }
 
         $schoolYearStart = intval($this->selectedYear);
-        $schoolYearEnd = $schoolYearStart + 1;
         // dd($schoolYearEnd, 'schoolYearEnd');
 
-        $this->students  = \App\Models\StudentReportCardGrades::with(['student_cert_of_grades' => function ($query) {
-                                $query->distinct('student_id');
-                            }])
+        $this->students  = \App\Models\StudentReportCardGrades::with('student_cert_of_grades')
                             ->select('student_id', 'marking_period_id')
                             ->distinct('student_id')
-                            ->whereBetween('syear', [$schoolYearStart, $schoolYearEnd])
+                            ->where('syear', 'ilike', $schoolYearStart)
                             ->get();
         // dd($this->students);
     }
 
-    public function viewFile($id)
+    public function viewFile($id, $marking_period)
     {
-        // dd($id);
-        to_route('sd.cogradesviewfile', ['student' => $id]);
+        // dd($id, $marking_period, $this->selectedYear);
+        to_route('sd.cogradesviewfile', [
+            'student'           =>  $id,
+            'marking_period'    =>  $marking_period,
+            'selectedYear'      =>  $this->selectedYear,
+        ]);
     }
 }

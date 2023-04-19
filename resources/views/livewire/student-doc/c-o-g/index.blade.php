@@ -34,8 +34,11 @@
                                 <div class="col-auto ms-auto d-print-none">
                                     <select wire:model="selectedYear" class="form-select">
                                         <option value="">Year</option>
-                                        <option value="">Year</option>
-                                        <option value="">2012</option>
+                                        @foreach ($syear as $year)
+                                            <option value="{{ $year->syear }}">
+                                                {{ getYears($year->syear) }}
+                                            </option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -52,58 +55,94 @@
                                 </div>
                             </div>
                             <div class="table-responsive">
-                                <table class="table card-table table-vcenter text-nowrap datatable">
-                                    <thead>
-                                        <tr>
-                                            <th class="w-1"><input class="form-check-input m-0 align-middle"
-                                                    type="checkbox" aria-label="Select all invoices"></th>
-                                            <th class="w-1">SIS ID
-                                            </th>
-                                            <th>First Name</th>
-                                            <th>Middle Name</th>
-                                            <th>Last Name</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td><input class="form-check-input m-0 align-middle" type="checkbox"
-                                                    aria-label="Select invoice">
-                                            </td>
-                                            <td>
-                                                1
-                                            </td>
-                                            <td>
-                                                Juno
-                                            </td>
-                                            <td></td>
-                                            <td>
-                                                Sipe
-                                            </td>
-                                            <td class="text-end">
-                                                <div class="btn-list flex-nowrap">
-                                                    <a href="#" wire:click="viewFile('1')">
-                                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                                            class="icon icon-tabler icon-tabler-file-certificate"
-                                                            width="24" height="24" viewBox="0 0 24 24"
-                                                            stroke-width="2" stroke="currentColor" fill="none"
-                                                            stroke-linecap="round" stroke-linejoin="round">
-                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none">
-                                                            </path>
-                                                            <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
-                                                            <path d="M5 8v-3a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2h-5">
-                                                            </path>
-                                                            <path d="M6 14m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0">
-                                                            </path>
-                                                            <path d="M4.5 17l-1.5 5l3 -1.5l3 1.5l-1.5 -5"></path>
-                                                        </svg>
-                                                        View File
-                                                    </a>
+                                <div class="table-responsive">
+                                    <table class="table card-table table-vcenter text-nowrap datatable">
+                                        <thead>
+                                            <tr>
+                                                <th class="w-1"><input class="form-check-input m-0 align-middle"
+                                                        type="checkbox" aria-label="Select all invoices"></th>
+                                                <th class="w-1">SIS ID</th>
+                                                <th class="w-1">STUDENT ID</th>
+                                                <th>First Name</th>
+                                                <th>Middle Name</th>
+                                                <th>Last Name</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @forelse ($students as $student)
+                                                <tr>
+                                                    <td><input class="form-check-input m-0 align-middle" type="checkbox"
+                                                            aria-label="Select invoice">
+                                                    </td>
+                                                    <td>
+                                                        <span
+                                                            class="text-muted">{{ $student->student->student_id }}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span
+                                                            class="text-muted">{{ $student->student->custom_200000012 ? round($student->student->custom_200000012) : '' }}</span>
+                                                    </td>
+                                                    <td>
+                                                        {{ $student->student->last_name }}
+                                                    </td>
+                                                    <td>{{ $student->student->first_name }}</td>
+                                                    <td>
+                                                        {{ $student->student->middle_name }}
+                                                    </td>
+                                                    <td class="text-end">
+                                                        <div class="btn-list flex-nowrap">
+                                                            <a href="#"
+                                                                wire:click="viewFile({{ $student->student->student_id }})">
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                    class="icon icon-tabler icon-tabler-file-certificate"
+                                                                    width="24" height="24" viewBox="0 0 24 24"
+                                                                    stroke-width="2" stroke="currentColor"
+                                                                    fill="none" stroke-linecap="round"
+                                                                    stroke-linejoin="round">
+                                                                    <path stroke="none" d="M0 0h24v24H0z"
+                                                                        fill="none">
+                                                                    </path>
+                                                                    <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                                                                    <path
+                                                                        d="M5 8v-3a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2h-5">
+                                                                    </path>
+                                                                    <path d="M6 14m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0">
+                                                                    </path>
+                                                                    <path d="M4.5 17l-1.5 5l3 -1.5l3 1.5l-1.5 -5">
+                                                                    </path>
+                                                                </svg>
+                                                                View File
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @empty
+                                                <div class="empty">
+                                                    <div class="empty-img"><img
+                                                            src="{{ asset('assets/images/undraw_void_-3-ggu.svg') }}"
+                                                            height="128" alt="">
+                                                    </div>
+                                                    <p class="empty-title">No results found</p>
+                                                    <p class="empty-subtitle text-muted">
+                                                        Try adjusting your year or search to find what you're looking
+                                                        for.
+                                                    </p>
+                                                    <div class="empty-action">
+                                                        <select wire:model="selectedYear" class="form-select">
+                                                            <option value="">Year</option>
+                                                            @foreach ($syear as $year)
+                                                                <option value="{{ $year->syear }}">
+                                                                    {{ getYears($year->syear) }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
                                                 </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                            @endforelse
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>

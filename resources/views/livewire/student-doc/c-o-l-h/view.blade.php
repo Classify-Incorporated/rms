@@ -12,7 +12,7 @@
                     <!-- Page title actions -->
                     <div class="col-auto ms-auto d-print-none">
                         <span class="d-none d-sm-inline">
-                            <a href="{{ route('sd.co-enrollment') }}" class="btn btn-secondary">
+                            <a href="{{ route('sd.colh') }}" class="btn btn-secondary">
                                 Back
                             </a>
                             <button type="button" class="btn btn-primary" onclick="javascript:window.print();">

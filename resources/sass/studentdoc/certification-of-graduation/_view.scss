@@ -1,4 +1,4 @@
-.view-file-cogrades {
+.view-file-certification-of-graduation {
     .page-body {
         .card-body {
             .header-title {
@@ -21,20 +21,43 @@
             }
 
             .header-main {
-                color: #000000;
-                .h1 {
+                color: #002060;
+                h1 {
                     font-size: 20px;
-                    font-weight: 600;
                     margin-bottom: -2px;
+                    font-weight: 700;
+                    font-family: "Roboto", sans-serif;
                 }
-                .body-title {
-                    text-align: center;
+
+                .header-line:nth-of-type(1) {
+                    width: 100%;
+                    border-bottom: 5px solid #000;
+                    margin-block: 5px;
                 }
             }
 
             .body-title {
                 text-align: center;
-                font-size: 30px;
+                font-size: 36px;
+                margin-bottom: -2px;
+                font-weight: 400;
+                font-family: "Roboto Condensed", sans-serif;
+            }
+
+            .body-semititle {
+                font-size: 12px;
+                font-weight: bold;
+                text-transform: capitalize;
+            }
+
+            .body-text-intro,
+            .issued {
+                text-indent: 40px;
+            }
+
+            .signature {
+                text-align: end;
+                // margin-right: 90px;
             }
 
             .form {
@@ -53,29 +76,15 @@
                 gap: 6px;
             }
 
-            .grades {
-                table {
-                    tbody {
-                        tr {
-                            border: transparent;
-                        }
-                    }
-                }
+            .name {
+                font-size: 36px;
+                font-weight: bold;
+                margin-right: 20px;
             }
 
             .underline-text {
                 font-size: 24px;
                 text-decoration: underline;
-            }
-
-            .ave {
-                text-align: end;
-                margin-right: 60px;
-            }
-
-            .signature {
-                text-align: end;
-                // margin-right: 90px;
             }
         }
     }

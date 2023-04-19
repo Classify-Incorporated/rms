@@ -17,4 +17,9 @@ class Students extends Model
     {
         return "{$this->last_name}, {$this->first_name}, {$this->middle_name}";
     }
+
+    public function student_report_card_grades()
+    {
+        return $this->hasMany(StudentReportCardGrades::class, 'student_id', 'student_id');
+    }
 }

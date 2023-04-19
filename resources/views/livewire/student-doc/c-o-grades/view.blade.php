@@ -1,4 +1,4 @@
-<div class="page view-file">
+<div class="page view-file-cogrades">
     <div class="page-wrapper">
         <!-- Page header -->
         <div class="page-header d-print-none">
@@ -12,7 +12,7 @@
                     <!-- Page title actions -->
                     <div class="col-auto ms-auto d-print-none">
                         <span class="d-none d-sm-inline">
-                            <a href="{{ route('sd.co-enrollment') }}" class="btn btn-secondary">
+                            <a href="{{ route('sd.cogrades') }}" class="btn btn-secondary">
                                 Back
                             </a>
                             <button type="button" class="btn btn-primary" onclick="javascript:window.print();">
@@ -78,7 +78,8 @@
                             <p class="body-semititle">To whom it may concern:</p>
                         </div>
                         <div class="body-text-intro">
-                            This is to certify that <strong class="student-name">NOTADA, CRISTINE JOY LABORDO</strong>
+                            This is to certify that <strong
+                                class="student-name"><i>{{ ucwords($student->full_name) }}</i></strong>
                             a <i>Bachelor of Early Childhood Education (BECE)</i> student of this institution has the
                             following records of her grades on the following subjects for the 1st Semester School Year
                             <text>2022-2023</text> in this
@@ -94,85 +95,76 @@
                                     </tr>
                                 </thead>
                             </table>
-                            <i>1st Semester 2022-2023 (BECE-4)</i>
                             <table class="table">
                                 <tbody>
                                     <tr>
-                                        <td>SP TOP</td>
-                                        <td>Special Topics</td>
-                                        <td>3</td>
+                                        <td><i>1st Semester 2022-2023 (BECE-4)</i></td>
+                                        <td></td>
+                                        <td></td>
                                     </tr>
-                                    <tr>
-                                        <td>ECE 18</td>
-                                        <td>Management of Early Childhood Education Program</td>
-                                        <td>3</td>
-                                    </tr>
-                                    <tr>
-                                        <td>ECE 20</td>
-                                        <td>Family, School, and Community Partnership</td>
-                                        <td>3</td>
-                                    </tr>
-                                    <tr>
-                                        <td>ECE 14</td>
-                                        <td>Early Childhood Education Curriculumn Models</td>
-                                        <td>3</td>
-                                    </tr>
-                                    <tr>
-                                        <td>FS 2</td>
-                                        <td>Field Study 2</td>
-                                        <td>3</td>
-                                    </tr>
-                                    <tr>
-                                        <td>ECE 19</td>
-                                        <td>Research in Early Childhood Education</td>
-                                        <td>3</td>
-                                    </tr>
+                                    @forelse ($first_semester_data as $first_sem_grade)
+                                        <tr>
+                                            <td>{{ $first_sem_grade->courseCode->short_name }}</td>
+                                            <td>{{ $first_sem_grade->course_title }}</td>
+                                            <td>{{ $first_sem_grade->grade_letter }}</td>
+                                        </tr>
+                                        @php
+                                            $average[] = round($first_sem_grade->grade_letter, 1);
+                                        @endphp
+                                    @empty
+                                        <div class="empty">
+                                            <div class="empty-img"><img
+                                                    src="{{ asset('assets/images/undraw_void_-3-ggu.svg') }}"
+                                                    height="128" alt="">
+                                            </div>
+                                            <p class="empty-title">No results found</p>
+                                            <p class="empty-subtitle text-muted">
+                                                Try adjusting your year or search to find what you're looking for.
+                                            </p>
+                                        </div>
+                                    @endforelse
                                 </tbody>
-                            </table>
-                            <i>2nd Semester 2022-2023 (BECE-4)</i>
-                            <table class="table">
                                 <tbody>
                                     <tr>
-                                        <td>SP TOP</td>
-                                        <td>Special Topics</td>
-                                        <td>3</td>
+                                        <td><i>2nd Semester 2022-2023 (BECE-4)</i></td>
+                                        <td></td>
+                                        <td></td>
                                     </tr>
+                                </tbody>
+
+                                <tbody>
+                                    @forelse ($second_semester_data as $second_sem_grade)
+                                        <tr>
+                                            <td>{{ $second_sem_grade->courseCode->short_name }}</td>
+                                            <td>{{ $second_sem_grade->course_title }}</td>
+                                            <td>{{ $second_sem_grade->grade_letter }}</td>
+                                        </tr>
+                                        @php
+                                            $average[] = round($second_sem_grade->grade_letter, 1);
+                                        @endphp
+                                    @empty
+                                        <div class="empty">
+                                            <div class="empty-img"><img
+                                                    src="{{ asset('assets/images/undraw_void_-3-ggu.svg') }}"
+                                                    height="128" alt="">
+                                            </div>
+                                            <p class="empty-title">No results found</p>
+                                            <p class="empty-subtitle text-muted">
+                                                Try adjusting your year or search to find what you're looking for.
+                                            </p>
+                                        </div>
+                                    @endforelse
                                     <tr>
-                                        <td>ECE 18</td>
-                                        <td>Management of Early Childhood Education Program</td>
-                                        <td>3</td>
-                                    </tr>
-                                    <tr>
-                                        <td>ECE 20</td>
-                                        <td>Family, School, and Community Partnership</td>
-                                        <td>3</td>
-                                    </tr>
-                                    <tr>
-                                        <td>ECE 14</td>
-                                        <td>Early Childhood Education Curriculumn Models</td>
-                                        <td>3</td>
-                                    </tr>
-                                    <tr>
-                                        <td>FS 2</td>
-                                        <td>Field Study 2</td>
-                                        <td>3</td>
-                                    </tr>
-                                    <tr>
-                                        <td>ECE 19</td>
-                                        <td>Research in Early Childhood Education</td>
-                                        <td>3</td>
+                                        <td><strong>Average</strong></td>
+                                        <td></td>
+                                        <td><strong>{{ calculateAverage($average) }}</strong></td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <div class="total">
-                                <strong>Average</strong>
-                            </div>
-                            <div class="ave">
-                                <strong>3</strong>
-                            </div>
                         </div>
-                        <div class="text-bottom mb-4 text-center">
-                            This certification is issued upon request of <i>Mr./Ms. Notada</i> for UNIFAST Scholarship
+                        <div class="text-bottom mb-3 text-center">
+                            This certification is issued upon request of <i>Mr./Ms. {{ $student->last_name }}</i> for
+                            UNIFAST Scholarship
                             purposes
                             only.
                         </div>
@@ -181,7 +173,7 @@
                                 <p>Very truly yours,</p>
                             </div>
                             <div>
-                                <p>
+                                <p class="mb-0">
                                     CHARMAE V. ESCANIEL
                                 </p>
                                 <p>
@@ -190,7 +182,7 @@
                             </div>
                         </div>
                         <div class="docu-validation">
-                            <p class="text-muted mt-5">Not valid without</p>
+                            <p class="text-muted mb-0">Not valid without</p>
                             <p class="text-muted">/School Seal/</p>
                         </div>
                     </div>

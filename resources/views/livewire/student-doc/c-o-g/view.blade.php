@@ -1,4 +1,4 @@
-<div class="page view-file">
+<div class="page view-file-certification-of-graduation">
     <div class="page-wrapper">
         <!-- Page header -->
         <div class="page-header d-print-none">
@@ -12,7 +12,7 @@
                     <!-- Page title actions -->
                     <div class="col-auto ms-auto d-print-none">
                         <span class="d-none d-sm-inline">
-                            <a href="{{ route('sd.co-enrollment') }}" class="btn btn-secondary">
+                            <a href="{{ route('sd.cog') }}" class="btn btn-secondary">
                                 Back
                             </a>
                             <button type="button" class="btn btn-primary" onclick="javascript:window.print();">
@@ -63,33 +63,30 @@
                                 <div class="header-line"></div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-6"></div>
-                            <div class="col-6 text-end">
-                                <h2 class="datenow">
-                                    {{ \Carbon\Carbon::now()->format('F d, Y') }}
-                                </h2>
-                            </div>
-                        </div>
                         <div>
                             <p class="body-title">CERTIFICATION</p>
                         </div>
-                        <div>
+                        <div class="mb-4">
                             <p class="body-semititle">To whom it may concern:</p>
                         </div>
-                        <div class="body-text-intro">
-                            This is to certify that <strong class="student-name">NOTADA, CRISTINE JOY LABORDO</strong>
+                        <div class="body-text-intro mb-4">
+                            This is to certify that <strong
+                                class="student-name"><i>{{ strtoupper($student->full_name) }}</i></strong>
                             graduated with the degree of <strong class="course">Bachelor of Early Childhood
                                 Education (BECE)</strong> on <text>October 7, 2022</text> Academic Year
-                            <text>2022-2023</text>.
+                            <text>{{ getYears($syear) }}</text>.
                         </div>
-                        <div class="text-bottom mb-4">
-                            Issued upon the request of <text> Ms. CRISTINE JOY</text> this 27th day of October, 2022 for
+                        <div class="text-bottom mb-4 issued">
+                            Issued upon the request of <i> Mr/Ms. {{ $student->last_name }}</i>
+                            {{ \Carbon\Carbon::now()->format('\t\h\i\s jS \d\a\y \of F, Y') }} for
                             employment purposes only.
                         </div>
                         <div class="signature">
                             <div>
-                                <p>
+                                <p>Very truly yours,</p>
+                            </div>
+                            <div>
+                                <p class="mb-0">
                                     CHARMAE V. ESCANIEL
                                 </p>
                                 <p>
@@ -98,6 +95,7 @@
                             </div>
                         </div>
                         <div class="docu-validation">
+                            <p class="text-muted mb-0">Not valid without</p>
                             <p class="text-muted">/School Seal/</p>
                         </div>
                     </div>

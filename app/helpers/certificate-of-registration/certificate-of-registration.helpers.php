@@ -1,12 +1,19 @@
 <?php
 
 
-function getYears($year)
+function getYears($year, $title = '')
 {
-    $schoolYearEnd = $year + 1;
-    $transformedItem = "{$year} - {$schoolYearEnd}";
+    if($title == '' || $title == null) {
+        $schoolYearEnd = $year + 1;
+        $transformedItem = "{$year} - {$schoolYearEnd}";
 
-    return $transformedItem;
+        return $transformedItem;
+    } else {
+        $schoolYearEnd = $year + 1;
+        $transformedItem = "{$year} - {$schoolYearEnd} ({$title})";
+
+        return $transformedItem;
+    }
 }
 
 
@@ -26,4 +33,19 @@ function semester($short_name)
     } elseif ($short_name == 's2') {
         $sem = '2<u>nd</u>';
     }
+}
+
+
+function calculateAverage($grades) {
+    $sum = array_reduce($grades, function ($carry, $grade) {
+        return $carry + $grade;
+    }, 0);
+
+    $count = count($grades);
+
+    if ($count === 0) {
+        return null;
+    }
+
+    return round($sum / $count, 2);
 }
