@@ -1,4 +1,4 @@
-.toroc {
+.tor-photocopy {
     .col-12 {
         position: relative;
         text-decoration: none;
@@ -67,5 +67,9 @@
             border: none;
             text-align: center;
         }
+    }
+
+    .page-body {
+        color: red;
     }
 }
